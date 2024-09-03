@@ -1,5 +1,5 @@
-// src/App.jsx
 import React, { useState } from 'react';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import Search from './components/Search';
 import Weather from './components/Weather';
@@ -14,28 +14,27 @@ function App() {
 
     try {
       const response = await fetch(url);
-      console.log('Full API Response:', response);
       if (!response.ok) {
         throw new Error('City not found');
       }
       const data = await response.json();
-      console.log('Weather Data:', data);
       setWeatherData(data);
       setError('');
     } catch (error) {
-      console.error('Error:', error.message);
       setWeatherData(null);
       setError('Error fetching data. Please try again later.');
     }
   };
 
   return (
-    <div className="app">
-      <h1>Weather App</h1>
-      <Search fetchWeather={fetchWeather} />
-      {error && <p className="error">{error}</p>}
-      {weatherData && <Weather data={weatherData} />}
-    </div>
+    <Router>
+      <div className="app">
+        <h1>Weather App</h1>
+        <Search fetchWeather={fetchWeather} />
+        {error && <p className="error">{error}</p>}
+        {weatherData && <Weather data={weatherData} />}
+      </div>
+    </Router>
   );
 }
 
