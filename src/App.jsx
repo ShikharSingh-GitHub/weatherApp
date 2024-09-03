@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, HashRouter as Router, Switch } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import './App.css';
 import Search from './components/Search';
 import Weather from './components/Weather';
