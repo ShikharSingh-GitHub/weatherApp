@@ -1,5 +1,6 @@
+// src/App.jsx
 import React, { useState } from 'react';
-
+import './App.css';
 import Search from './components/Search';
 import Weather from './components/Weather';
 
@@ -8,8 +9,8 @@ function App() {
   const [error, setError] = useState('');
 
   const fetchWeather = async (city) => {
-    const apiKey = d755bc4402ced83f8bba582df6c28dba; // Replace with your actual API key
-    const url = `/api/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiKey = 'd755bc4402ced83f8bba582df6c28dba'; // Replace with your actual API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     try {
       const response = await fetch(url);
